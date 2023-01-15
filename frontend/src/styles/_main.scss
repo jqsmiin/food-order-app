@@ -1,0 +1,371 @@
+@import "utilities";
+@import "variables";
+
+#nav {
+  .responsive-navbar-nav {
+    justify-content: flex-end;
+  }
+  .navbar-brand {
+    h3 {
+      display: flex;
+      gap: 1rem;
+      padding-top: 12px;
+      color: $secondary-color;
+      font-weight: 700;
+      span {
+        color: $icon-color;
+      }
+    }
+  }
+  .navbar-nav {
+    gap: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+      color: $p-color;
+      font-size: 20px;
+      font-weight: 450;
+      &:hover {
+        color: $main-color;
+        transition: 0.3s;
+      }
+    }
+    .user-icon {
+      padding-left: 3rem;
+      font-size: 26px;
+      padding-top: 2px;
+      color: $icon-color;
+    }
+  }
+}
+#header {
+  padding-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    padding-bottom: 11px;
+  }
+  p {
+    color: $secondary-color;
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  .item-1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    .bg-1 {
+      position: absolute;
+      top: -6px;
+      img {
+        transform: rotate(338deg);
+      }
+    }
+  }
+  .item-2 {
+    position: relative;
+    z-index: -13;
+    img {
+      transform: rotate(10deg);
+    }
+    .bg-3 {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 2;
+      img {
+        width: 96px !important;
+        transform: rotate(26deg);
+      }
+    }
+    .bg-2 {
+      position: absolute;
+      z-index: 3;
+      right: 50px;
+      img {
+        width: 74px;
+      }
+    }
+  }
+}
+#food {
+  .slick-list {
+    padding-bottom: 2rem;
+  }
+}
+#service {
+  .item-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .item-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h2 {
+      font-size: 3rem;
+      font-weight: 600;
+    }
+    p {
+      color: #49291c;
+      font-weight: 500;
+      font-size: 15px;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+    .items {
+      display: flex;
+      gap: 5rem;
+      .item-1,
+      .item-2 {
+        ul {
+          list-style: none;
+          li {
+            font-size: 21px;
+            margin-bottom: 10px;
+            display: flex;
+            gap: 0.5rem;
+          }
+        }
+      }
+    }
+    .btn-container {
+      margin-top: 1.5rem;
+    }
+  }
+}
+#main-footer {
+  padding-bottom: 3rem;
+  .icon-container {
+    h3 {
+      display: flex;
+      gap: 1rem;
+      padding-top: 12px;
+      color: $secondary-color;
+      font-weight: 700;
+      span {
+        color: $icon-color;
+      }
+    }
+  }
+  .footer-container {
+    padding-top: 1.3rem;
+    ul {
+      list-style: square;
+    }
+    h3 {
+      font-size: 22px;
+    }
+    li {
+      cursor: default;
+      &:hover {
+        color: $main-color;
+        transition: 0.3s;
+      }
+    }
+  }
+}
+#profile {
+  .profile-container {
+    img {
+      width: 196px;
+    }
+    .img {
+      display: flex;
+      gap: 2rem;
+    }
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-top: 1rem;
+    }
+  }
+  form {
+    padding-bottom: 5rem;
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 1.3rem;
+      gap: 1rem;
+      label {
+        font-size: 21px;
+        font-weight: 700;
+      }
+      input {
+        font-size: 18px;
+        padding: 6px 1rem;
+        outline: none;
+        border: 2px solid #e5a42c;
+      }
+    }
+  }
+}
+#cart {
+  img {
+    width: 135px;
+    height: 100px;
+  }
+  .container {
+    position: relative;
+  }
+  .totalPrice {
+    position: absolute;
+    right: 58px;
+    top: 35px;
+    h3 {
+      text-transform: uppercase;
+      font-size: 21px;
+      font-weight: 900;
+    }
+    p {
+      font-size: 19px;
+      color: $icon-color;
+      font-weight: 700;
+    }
+  }
+  .price-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid #ccc;
+    padding: 21px;
+    text-align: center;
+    .info {
+      .profile-btn {
+        display: unset !important;
+      }
+    }
+    .count {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+#sell-food {
+  form {
+    padding-bottom: 5rem;
+  }
+}
+#register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  position: relative;
+  gap: 2rem;
+  overflow: hidden;
+  .img-container {
+    position: absolute;
+    top: 18px;
+    right: -53px;
+    transform: rotate(322deg);
+  }
+  .img {
+    position: absolute;
+    left: -50px;
+    top: 18px;
+    transform: rotate(130deg);
+  }
+  img {
+    width: 298px;
+  }
+  .box {
+    border: 4px solid #e5a42c;
+    padding: 91px 29px;
+    width: 350px;
+    text-align: center;
+    cursor: default;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .box-1 {
+    animation: backgroundMoveUp 5s infinite;
+    animation-timing-function: cubic-bezier(0.69, 0.01, 0.55, 0.99) infinite;
+    animation-delay: 0.5s;
+    @keyframes backgroundMoveUp {
+      0% {
+        background: $main-color;
+      }
+      25% {
+        background-color: $icon-color;
+      }
+      50% {
+        background-color: #c7850b;
+      }
+      80% {
+        background-color: #ffce74;
+      }
+      100% {
+        background-color: #ffe2ad;
+      }
+    }
+  }
+  .box-2 {
+    animation: backgroundMoveDown 5s infinite;
+    animation-timing-function: cubic-bezier(0.69, 0.01, 0.55, 0.99) infinite;
+    animation-delay: 0.5s;
+    @keyframes backgroundMoveDown {
+      0% {
+        background-color: #ffe2ad;
+      }
+      25% {
+        background-color: #ffce74;
+      }
+      50% {
+        background-color: #c7850b;
+      }
+      80% {
+        background-color: $icon-color;
+      }
+      100% {
+        background: $main-color;
+      }
+    }
+  }
+}
+#sign-up {
+  padding-top: 7rem;
+  .item-1 {
+    border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+      height: 95%;
+    }
+    .text-container {
+      margin-top: 2rem;
+      text-align: center;
+      h3 {
+        font-size: 22px;
+        font-weight: 700;
+      }
+      p {
+        color: $secondary-color;
+        font-weight: 500;
+        font-size: 14px;
+      }
+    }
+  }
+  .item-2 {
+    background: #ffefd2;
+    padding: 2.5rem 2rem;
+    h3 {
+      margin-bottom: 2rem;
+      font-weight: 900;
+    }
+  }
+}

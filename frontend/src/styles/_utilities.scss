@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
+@import "variables";
+
+body {
+  font-family: "Sofia Sans", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: #000;
+}
+img {
+  width: 100%;
+}
+.pb-6 {
+  padding-bottom: 5rem;
+}
+.pt-6 {
+  padding-top: 5rem;
+}
+.primary-btn {
+  border: $main-color !important;
+  background: #f2bc57;
+  color: $secondary-color;
+  font-weight: 600;
+  padding: 11px 22px;
+  border-radius: 24px;
+  text-decoration: none;
+  &:hover {
+    color: $secondary-color;
+  }
+}
+.pageHeader {
+  padding-bottom: 2.5rem;
+  h3 {
+    font-size: 29px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: $icon-color;
+  }
+}
+.secondary-btn {
+  background: none;
+  outline: none;
+  border: 2px solid $main-color;
+  border-radius: 31px;
+  padding: 6px 12px;
+  &:hover {
+    background-color: $main-color;
+    color: #fff;
+    transition: 0.3s;
+  }
+}
+.profile-btn {
+  background: none;
+  display: flex;
+  gap: 9px;
+  outline: none;
+  border: 2px solid $main-color;
+  padding: 6px 12px;
+  &:hover {
+    background-color: $main-color;
+    color: #fff;
+    transition: 0.3s;
+  }
+}
+.formInputFile {
+  pointer-events: none;
+  border: none !important;
+  padding: 6px 0 !important;
+}
+.formInputFile::-webkit-file-upload-button {
+  background-color: $main-color;
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 1rem;
+  margin-right: 1rem;
+  pointer-events: all !important;
+  cursor: pointer;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1.3rem;
+  gap: 1rem;
+  label {
+    font-size: 21px;
+    font-weight: 700;
+  }
+  input,
+  select,
+  textarea {
+    border: 2px solid #e5a42c;
+    font-size: 18px;
+    padding: 6px 1rem;
+    outline: none;
+  }
+}
+.food-container {
+  padding-bottom: 1.5rem;
+  border-radius: 6px;
+  padding: 13px;
+  border: 1px solid #ededed;
+  width: 90% !important;
+  &:hover {
+    transition: 0.3s;
+    box-shadow: 2px 2px 7px #f2bc57;
+  }
+  img {
+    width: 215px;
+    border-radius: 53%;
+    margin-bottom: 1rem;
+  }
+  .food-title {
+    font-size: 23px;
+  }
+  p {
+    font-size: 15px;
+  }
+  .price {
+    display: flex;
+    gap: 3.5rem;
+    justify-content: center;
+    align-items: center;
+    h3 {
+      font-size: 21px;
+      padding-top: 9px;
+    }
+  }
+}
