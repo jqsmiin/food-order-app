@@ -5,16 +5,14 @@ const {
   getMe,
   updateMe,
   deleteMe,
+  uploadPhoto,
+  resizePhoto,
 } = require("../controllers/authController");
-const { verifyUser } = require("../utils/verifyToken");
+const { verifyUser, verifyToken } = require("../utils/verifyToken");
 const router = express.Router();
 
 router.route("/").post(createUser);
 router.post("/login", loginUser);
-router
-  .route("/:id")
-  .get(verifyUser, getMe)
-  .put(verifyUser, updateMe)
-  .delete(verifyUser, deleteMe);
+router.route("/:id").get(verifyToken, getMe).put(verifyToken, uploadPhoto,resizePhoto, updateMe).delete(verifyUser, deleteMe);
 
 module.exports = router;

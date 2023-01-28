@@ -2,6 +2,42 @@ const User = require("../models/User");
 const { createError } = require("../utils/error");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const multer = require("multer");
+const sharp = require("sharp");
+
+const multerStorage = multer.memoryStorage();
+
+// const multerFilter = (req, file, cb) => {
+//     if (file.mimetype.startsWith('image')) {
+//         cb(null, true)
+//     } else {
+//         const msg = 'Not an image!, Please upload only images'
+//         cb(msg, false)
+//     }
+// }
+
+const upload = multer({
+  storage: multerStorage,
+});
+
+exports.uploadPhoto = upload.single("profilePhoto");
+
+exports.resizePhoto = (req, res, next) => {
+  if (!req.file) return next();
+
+  const imgName = req.file.originalname.split(".")[0];
+  const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+
+  req.file.filename = imgName + "-" + `${uniqueSuffix}.jpeg`;
+
+  sharp(req.file.buffer)
+    .resize(500, 500, { withoutEnlargement: true })
+    .toFormat("jpeg")
+    .jpeg({ quality: 90 })
+    .toFile(`public/images/${req.file.filename}`);
+
+  next();
+};
 
 // Generate token
 const generateToken = (id, isAdmin) => {
@@ -36,6 +72,7 @@ exports.createUser = async (req, res, next) => {
 exports.loginUser = async (req, res, next) => {
   try {
     const { email } = req.body;
+    console.log(req.body);
     const user = await User.findOne({ email });
     if (!user) return next(createError(404, "User not found"));
 
@@ -81,14 +118,17 @@ exports.getMe = async (req, res, next) => {
 // Update me
 exports.updateMe = async (req, res, next) => {
   try {
-    const { name, email, photo } = req.body;
+    let photo
+    const { name, email } = req.body;
+    if(req.file) photo = req.file.filename
     const user = await User.findByIdAndUpdate(
       req.user.id,
-      { name, email, photo },
+      { name, email, profilePhoto : photo },
       {
         new: true,
       }
     );
+
 
     res.status(200).json({
       success: true,

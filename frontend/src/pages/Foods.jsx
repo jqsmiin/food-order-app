@@ -1,46 +1,34 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import food1 from "../images/food1.jpg";
-import food2 from "../images/food2.jpg";
-import food3 from "../images/food3.jpg";
-import food4 from "../images/food4.jpg";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { getAllFood, reset } from "../features/food/foodSlice";
+import Spinner from "../components/Spinner";
 
 function Foods() {
-  const data = [
-    {
-      id: 1,
-      img: food1,
-      title: "Pasta",
-      paragraph:
-        " Pasta is a type of food typically made from an unleavened dough.",
-      price: "$35.00",
-    },
-    {
-      id: 2,
-      img: food2,
-      title: "Pasta",
-      paragraph:
-        " Pasta is a type of food typically made from an unleavened dough.",
-      price: "$35.00",
-    },
-    {
-      id: 3,
-      img: food3,
-      title: "Pizza",
-      paragraph:
-        " Pizza is a type of food typically made from an unleavened dough.",
-      price: "$35.00",
-    },
-    {
-      id: 4,
-      img: food4,
-      title: "Chicken",
-      paragraph:
-        " Chicken is a type of food typically made from an unleavened dough.",
-      price: "$35.00",
-    },
-  ];
+  const dispatch = useDispatch();
+  const { food, isError, isSuccess, message, isLoading } = useSelector(
+    (state) => state.food
+  );
+
+  useEffect(() => {
+    dispatch(getAllFood());
+    if (isError) {
+      console.log(message);
+      toast.error("Something went wrong!");
+    }
+    if (isSuccess) {
+      dispatch(reset());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
   return (
     <section id="foods" className="pt-5 pb-6">
       <Container>
@@ -48,21 +36,30 @@ function Foods() {
           <h3>All available food!</h3>
         </div>
         <Row>
-          {data.map((food) => (
-            <Col md={4} key={food.id} className="item mb-4">
-              <div className="food-container">
-                <div className="img-container d-flex justify-content-center">
-                  <img src={food.img} alt="Dish" />
+          {food &&
+            food.length > 0 &&
+            food.map((food) => (
+              <Col lg={4} md={6} key={food._id} className="item mb-4">
+                <div className="food-container">
+                  <div className="img-wrapper">
+                    <div className="img-container d-flex justify-content-center">
+                      <img
+                        src={`http://localhost:5000/static/${food.images}`}
+                        alt="Dish"
+                      />
+                    </div>
+                  </div>
+                  <h3 className="food-title">{food.productTitle}</h3>
+                  <p>{food.description}</p>
+                  <div className="price">
+                    <h3>$ {food.price}</h3>
+                    <Link to={`/food/${food._id}`} className="secondary-btn">
+                      View More
+                    </Link>
+                  </div>
                 </div>
-                <h3 className="food-title">{food.title}</h3>
-                <p>{food.paragraph}</p>
-                <div className="price">
-                  <h3>{food.price}</h3>
-                  <button className="secondary-btn">Add To Cart</button>
-                </div>
-              </div>
-            </Col>
-          ))}
+              </Col>
+            ))}
         </Row>
       </Container>
     </section>

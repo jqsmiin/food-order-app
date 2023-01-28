@@ -1,4 +1,21 @@
-Kreirati userController i userRoutes, omoguciti adminu da fetcha sve usere, obrise ih, updatuje...
-Kreirati food model i foodController, foodRoutes, napraviti sve potrebne funckije
-Kreirati funkcije za delete, getMyfood, getAllfoods. Kreirati funkciju getallfoods....
-U users schemi doadti myOrders polje, tu povezati znaci sve narudzbe sa userom.
+Omoguciti customeru da dodaje hranu u korpu i da je kupuje 
+Omoguciti uploudovanje slika
+Omoguciti userima da mjenjaju slike na profilima, da vide ukupnu zaradu, njihove postavljene artikle i myb njihovu historiju narudzbi
+
+Fetchati foods, omoguciti useru da doda hranu u korpu
+
+Napraviti Food stranicu, omoguciti useru da dodaje iteme u korpu
+Omoguciti restoranu da vidi svoje produkte
+Omoguciti restoranu da obrise svoje produkte
+Na home stranici displayati produkte u carouselu
+
+Omoguciti useru da dodaje iteme u korpu, da ih vidi, da ih moze uvecavati itd.
+Omoguciti restoranu da moze obrisati svoj item iz kolekcije
+Omoguciti useru da moze obrisati item iz korpe
+Testirati jos 1 sve i uploudovati app
+Nakon testiranja poslikati sve, napraviti screenove i poslije tog uraditi sljedece:
+git add .
+git commit m 'comm'
+git push -u origin main
+Dakle sacuvati sve promjene na github i poslije naci nacin da se fileovi uploudaju.
+s

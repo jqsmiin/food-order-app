@@ -1,79 +1,32 @@
-import Container from "react-bootstrap/Container";
-import Slider from "react-slick";
-import food1 from "../../images/food1.jpg";
-import food2 from "../../images/food2.jpg";
-import food3 from "../../images/food3.jpg";
-import food4 from "../../images/food4.jpg";
+import { getAllFood, reset } from "../../features/food/foodSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import Spinner from "../../components/Spinner";
+import FoodCarousel from "../../components/FoodCarousel";
+import { toast } from "react-toastify";
 
 function Food() {
-  const data = [
-    {
-      id: 1,
-      img: food1,
-      title: "Pasta",
-      paragraph:
-        " Pasta is a type of food typically made from an unleavened dough.",
-      price: "$35.00",
-    },
-    {
-      id: 2,
-      img: food2,
-      title: "Pasta",
-      paragraph:
-        " Pasta is a type of food typically made from an unleavened dough.",
-      price: "$35.00",
-    },
-    {
-      id: 3,
-      img: food3,
-      title: "Pasta",
-      paragraph:
-        " Pasta is a type of food typically made from an unleavened dough.",
-      price: "$35.00",
-    },
-    {
-      id: 4,
-      img: food4,
-      title: "Pasta",
-      paragraph:
-        " Pasta is a type of food typically made from an unleavened dough.",
-      price: "$35.00",
-    },
-  ];
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    autoplay: true,
-    speed: 2000,
-    autoplaySpeed: 2000,
-    cssEase: "linear",
-  };
+  const dispatch = useDispatch()
+  const {food, isError, isSuccess, message, isLoading} = useSelector((state) => state.food)
+
+  useEffect(() =>{
+    dispatch(getAllFood(9))
+    if(isError){
+      console.log(message)
+      toast.error('Something went wrong!')
+    }
+    if(isSuccess){
+      dispatch(reset())
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])  
+
+  if(isLoading){
+    return <Spinner />
+  }
   return (
-    <section id="food" className="pb-6">
-      <Container>
-        <div className="pageHeader">
-          <h3>Popular food</h3>
-        </div>
-        <Slider {...settings}>
-          {data.map((food) => {
-            return (
-              <div className="food-container" key={food.id}>
-                <div className="img-container d-flex justify-content-center">
-                  <img src={food.img} alt="Dish" />
-                </div>
-                <h3 className="food-title">{food.title}</h3>
-                <p>{food.paragraph}</p>
-                <div className="price">
-                  <h3>{food.price}</h3>
-                  <button className="secondary-btn">Add To Cart</button>
-                </div>
-              </div>
-            );
-          })}
-        </Slider>
-      </Container>
+    <section id="food-section">
+      <FoodCarousel foods={food} />
     </section>
   );
 }

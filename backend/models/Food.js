@@ -19,8 +19,9 @@ const foodSchema = new Schema(
       default: "fast food",
     },
     images: {
-      type: [String],
+      type: String,
       default: "food.png",
+      required: true
     },
     description: {
       type: String,

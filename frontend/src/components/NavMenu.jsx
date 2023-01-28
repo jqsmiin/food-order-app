@@ -5,9 +5,12 @@ import { MdDeliveryDining } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function NavMenu() {
   const [scroll, setScroll] = useState(false);
+
+  const { user } = useSelector((state) => state.auth);
 
   const setNavbar = () => {
     //console.log(window.scrollY)
@@ -31,13 +34,15 @@ function NavMenu() {
         className={scroll ? "navScroll" : ""}
       >
         <Container>
-          <Navbar.Brand href="/">
-            <h3>
-              <span>
-                <MdDeliveryDining />
-              </span>
-              Delivery
-            </h3>
+          <Navbar.Brand>
+            <Link className="home-link" to="/">
+              <h3>
+                <span>
+                  <MdDeliveryDining />
+                </span>
+                Delivery
+              </h3>
+            </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav">
             <svg
@@ -59,16 +64,30 @@ function NavMenu() {
               <Link to="/" className="nav-link">
                 Home
               </Link>
-              <Link to="/cart" className="nav-link">
-                Cart
-              </Link>
+              {user !== null && user.role === "customer" && (
+                <Link to="/cart" className="nav-link">
+                  Cart
+                </Link>
+              )}
+              {user !== null && user.role === "admin" && (
+                <Link to="/cart" className="nav-link">
+                  Cart
+                </Link>
+              )}
               <Link to="/foods" className="nav-link">
                 Foods
               </Link>
-              <Link to="/sell-food" className="nav-link">
-                Sell Your Food!
-              </Link>
-              <Link to="/sign-up" className="nav-link user-icon">
+              {user !== null && user.role === "restaurant" && (
+                <Link to="/sell-food" className="nav-link">
+                  Sell Your Food!
+                </Link>
+              )}
+              {user !== null && user.role === "admin" && (
+                <Link to="/sell-food" className="nav-link">
+                  Sell Your Food!
+                </Link>
+              )}
+              <Link to="/profile" className="nav-link user-icon">
                 <FaUserCircle />
               </Link>
             </Nav>

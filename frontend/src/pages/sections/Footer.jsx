@@ -45,7 +45,7 @@ function Footer() {
             <hr />
           </div>
           {data.map((item) => (
-            <Col md={3} key={item.id}>
+            <Col md={3} sm={6} xs={6} key={item.id}>
               <div className="footer-container">
                 <h3>{item.title}</h3>
                 <ul>
