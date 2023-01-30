@@ -88,10 +88,7 @@ function FoodCarousel({ foods, icon }) {
                   )}
                   <div className="img-wrapper">
                     <div className="img-container d-flex justify-content-center">
-                      <img
-                        src={`http://localhost:5000/static/${food?.images}`}
-                        alt="dish"
-                      />
+                      <img src={`/static/${food?.images}`} alt="dish" />
                     </div>
                   </div>
                   <h3 className="food-title">{food?.productTitle}</h3>

@@ -5,7 +5,7 @@ import { removeFromCart } from "../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
 
 function CartItem({ cart }) {
-  const url = "http://localhost:5000/static";
+  const url = "/static";
   const [value, setValue] = useState(1);
   const [price, setPrice] = useState(cart?.price);
   const dispatch = useDispatch();

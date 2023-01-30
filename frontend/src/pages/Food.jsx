@@ -55,10 +55,7 @@ function Food() {
             <div className="content">
               <div className="photo-container">
                 <img
-                  src={
-                    food?.images &&
-                    `http://localhost:5000/static/${food?.images}`
-                  }
+                  src={food?.images && `/static/${food?.images}`}
                   alt="Dish"
                 />
               </div>

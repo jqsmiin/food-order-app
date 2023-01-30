@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/food";
+const API_URL = "/api/food";
 
 const createFood = async (foodData) => {
   const res = await axios.post(API_URL, foodData, {
@@ -30,7 +30,7 @@ const getSimilarFood = async (category) => {
 };
 
 const getMyFood = async () => {
-  const res = await axios.get('http://localhost:5000/api/food', {
+  const res = await axios.get('/api/food', {
     withCredentials: true,
   });
 

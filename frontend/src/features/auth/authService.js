@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/auth";
+//const API_URL = "http://localhost:5000/api/auth";
 
 const register = async (userData) => {
-  const res = await axios.post(API_URL, userData);
+  const res = await axios.post("/api/auth", userData);
 
   if (res.data) {
     localStorage.setItem("user", JSON.stringify(res.data.user));
@@ -12,7 +12,7 @@ const register = async (userData) => {
   return res.data;
 };
 const login = async (userData) => {
-  const res = await axios.post(API_URL + "/login", userData, {
+  const res = await axios.post("/api/auth/login", userData, {
     withCredentials: true,
   });
 
@@ -24,7 +24,7 @@ const login = async (userData) => {
 };
 
 const getMe = async (userId) => {
-  const res = await axios.get(API_URL + "/" + userId, {
+  const res = await axios.get(`/api/auth/${userId}`, {
     withCredentials: true,
   });
 
@@ -33,7 +33,7 @@ const getMe = async (userId) => {
 
 const updateMe = async (userId, formData) => {
   if (userId && formData) {
-    const res = await axios.put(`http://localhost:5000/api/auth/${userId}`,
+    const res = await axios.put(`/api/auth/${userId}`,
       formData,
       {
         headers: { 'Content-Type': 'multipart/form-data' }, withCredentials: true

@@ -9,6 +9,7 @@ const cartRoute = require("./routes/cartRoutes");
 const foodRoute = require("./routes/foodRoutes");
 const cookieparser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const path = require('path')
 const PORT = process.env.port || 8000;
 
 const connect = async () => {
@@ -39,7 +40,7 @@ app.use(
     extended: true,
   })
 );
-app.use("/static", express.static("public/images"));
+
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/food", foodRoute);
@@ -56,6 +57,12 @@ app.use((err, req, res, next) => {
     stack: err.stack,
   });
 });
+
+app.use("/static", express.static("public/images"));
+app.use(express.static(path.join(__dirname, '../frontend/build')))
+app.get("*", (req, res) =>
+  res.sendFile(__dirname, "../", "frontend", "build", "index.html")
+);
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}`);

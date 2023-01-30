@@ -89,10 +89,7 @@ function Profile() {
             <div className="profile-container">
               <h3>Profile photo</h3>
               <div className="img">
-                <img
-                  src={`http://localhost:5000/static/${user.profilePhoto}`}
-                  alt="User"
-                />
+                <img src={`/static/${user.profilePhoto}`} alt="User" />
                 <div className="buttons">
                   <div className="change-photo">
                     <h3>

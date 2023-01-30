@@ -43,10 +43,7 @@ function Foods() {
                 <div className="food-container">
                   <div className="img-wrapper">
                     <div className="img-container d-flex justify-content-center">
-                      <img
-                        src={`http://localhost:5000/static/${food.images}`}
-                        alt="Dish"
-                      />
+                      <img src={`/static/${food.images}`} alt="Dish" />
                     </div>
                   </div>
                   <h3 className="food-title">{food.productTitle}</h3>
